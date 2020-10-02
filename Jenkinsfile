@@ -10,6 +10,7 @@ node {
         dir(".") {
             sh 'npm install'
             sh 'npm run test'
+            sh 'npm start'
         }
     }    
     stage('Build image') {
