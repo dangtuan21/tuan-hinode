@@ -6,7 +6,14 @@ node {
 
         checkout scm
     }
-
+    stage('Build + Test') {
+      steps {
+        dir(".") {
+          sh 'npm install'
+          sh 'npm run test'
+        }
+      }
+    } 
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
@@ -26,7 +33,6 @@ node {
     stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             //docker tag apmod/pia-diff-batch-job:latest 455920691004.dkr.ecr.us-east-1.amazonaws.com/apmod/pia-diff-batch-job:latest
-            app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
     }
