@@ -6,14 +6,14 @@ node {
 
         checkout scm
     }
-    stage('Build + Test') {
-      steps {
-        dir(".") {
-          sh 'npm install'
-          sh 'npm run test'
+    stage('Build ') {
+        steps {
+            dir(".") {
+                sh 'npm install'
+                sh 'npm run test'
+            }
         }
-      }
-    } 
+    }    
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
