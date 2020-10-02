@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("tuan/hellonode")
+        app = docker.build("dangtuan21/hinode")
     }
 
     stage('Test image') {
@@ -25,6 +25,7 @@ node {
 
     stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            //docker tag apmod/pia-diff-batch-job:latest 455920691004.dkr.ecr.us-east-1.amazonaws.com/apmod/pia-diff-batch-job:latest
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
