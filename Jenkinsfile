@@ -7,11 +7,9 @@ node {
         checkout scm
     }
     stage('Build ') {
-        steps {
-            dir(".") {
-                sh 'npm install'
-                sh 'npm run test'
-            }
+        dir(".") {
+            sh 'npm install'
+            sh 'npm run test'
         }
     }    
     stage('Build image') {
