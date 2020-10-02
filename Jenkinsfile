@@ -10,7 +10,6 @@ node {
         dir(".") {
             sh 'npm install'
             sh 'npm run test'
-            sh 'npm start'
         }
     }    
     stage('Build image') {
@@ -25,7 +24,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh 'echo "Tests passed"'
+            sh 'node main.js'
         }
     }
 
